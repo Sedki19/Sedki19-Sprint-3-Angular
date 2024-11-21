@@ -1,0 +1,37 @@
+<div class="container">
+
+    <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+        <label>Marques</label>
+        <select class="form-control form-control-lg" id="idMarq" name="idMarq" [(ngModel)]="IdMarque"
+            (change)="onChange()">
+            <option *ngFor="let marq of marques" value="{{marq.idMarq}}">
+                {{marq.nomMarq}}
+            </option>
+        </select>
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Prix</th>
+                        <th>Specifications</th>
+                        <th>Marque</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let pc of pcs">
+                    <tr>
+                        <td>{{pc.idPc}}</td>
+                        <td>{{pc.nomPc}}</td>
+                        <td>{{pc.prixPc}}</td>
+                        <td>{{pc.specs}}</td>
+                        <td>{{pc.marque?.nomMarq}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

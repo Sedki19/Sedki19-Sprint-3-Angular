@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Prix</th>
+                        <th>Specifications</th>
+                        <th>Marque</th>
+                        <th>Image</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let pc of pcs">
+                    <tr>
+                        <td>{{pc.idPc}}</td>
+                        <td>{{pc.nomPc}}</td>
+                        <td>{{pc.prixPc}}</td>
+                        <td>{{pc.specs}}</td>
+                        <td>{{pc.marque?.nomMarq}}</td>
+                        <td><img class="card-img-top img-responsive" src="{{apiurl+'/image/loadfromFS/'+pc.idPc}}"
+                                style="height :50px;width:100px">
+                        </td>
+
+                        <td>
+                            <a *ngIf="authService.isAdmin()" class="btn btn-danger" (click)="supprimerPC(pc)">
+                                Supprimer
+                            </a>
+                        </td>
+                        <td>
+                            <a *ngIf="authService.isAdmin()" class="btn btn-success"
+                                [routerLink]="['/updatePC', pc.idPc]">
+                                Modifier
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

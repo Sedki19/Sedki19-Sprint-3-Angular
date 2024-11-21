@@ -1,0 +1,42 @@
+<div class="container">
+    <div>
+        <h2>Ajouter un PC :</h2>
+    </div>
+    <form>
+        <div hidden class="col-sm-2 col-md-2 col-lg-2">
+            <label>ID PC</label>
+            <input type="text" [(ngModel)]="newPC.idPc" name="idPC" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Nom PC</label>
+            <input type="text" [(ngModel)]="newPC.nomPc" name="nomPC" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>Prix PC</label>
+            <input type="number" [(ngModel)]="newPC.prixPc" name="prixPC" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Specifications</label>
+            <input type="text" [(ngModel)]="newPC.specs" name="specs" class="form-control">
+        </div>
+
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Marque</label>
+            <select class="form-control form-control-lg" id="idMarq" name="idMarq" [(ngModel)]="newIdMarq">
+                <option *ngFor="let marq of marques" [value]="marq.idMarq">
+                    {{marq.nomMarq}}
+                </option>
+            </select>
+        </div>
+        <div class="col-sm-16 col-md-16 col-lg-16">
+            <label class="mb-2">Image :</label>
+            <input type="file" (change)="onImageUpload($event)" name="logo" class="form-control">
+        </div>
+        <div class="col-sm-16 col-md-16 col-lg-16">
+            <img [src]="imagePath" class="card-img-top img-fluid rounded-start" style="width: 500px; height: 300px" />
+        </div>
+        <div class="mt-2">
+            <button type="submit" (click)="addPC()" class="btn btn-success">Ajouter</button>
+        </div>
+    </form>
+</div>
